@@ -1,34 +1,65 @@
 # Password_Checker
 
-import string
+# Password Strength Checker
 
-def assess_password_strength(password):
-  """Assesses the strength of a password based on various criteria.
+## Overview
 
-  Args:
-    password: The password to be assessed.
+This project is a simple Python application that assesses the strength of a password using common security criteria. It evaluates passwords based on their length and the presence of uppercase letters, lowercase letters, numbers, and special characters.
 
-  Returns:
-    A string indicating the password's strength.
-  """
+The application continuously prompts users to enter a password and classifies it as **Weak**, **Medium**, or **Strong** based on predefined rules.
 
-  length = len(password)
-  has_uppercase = any(char.isupper() for char in password)
-  has_lowercase = any(char.islower() for char in password)
-  has_number  = any(char.isdigit() for char in password) 
+## Features
 
-  has_special_char = any(char not in string.ascii_letters + string.digits for char in password)
+* Checks for a minimum password length of 8 characters
+* Detects uppercase letters
+* Detects lowercase letters
+* Detects numeric characters
+* Detects special characters
+* Classifies passwords as:
 
-  strength = "Weak"
-  if length >= 8 and has_uppercase and has_lowercase and has_number and has_special_char:
-    strength = "Strong"
-  elif length >= 8 and (has_uppercase or has_lowercase) and (has_number or has_special_char):
-    strength = "Medium"
+  * **Weak**
+  * **Medium**
+  * **Strong**
+* Runs in a continuous loop until the program is stopped
 
-  return strength
+## Technologies Used
 
-if __name__ == "__main__":
-  while True:
-    password = input("Enter a password: ")
-    strength = assess_password_strength(password)
-    print("Password strength:", strength)
+* Python 3
+* Built-in `string` module
+
+## How It Works
+
+The program evaluates each password against the following criteria:
+
+| Strength   | Requirements                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------ |
+| **Strong** | At least 8 characters, including uppercase letters, lowercase letters, numbers, and special characters |
+| **Medium** | At least 8 characters with letters and either numbers or special characters                            |
+| **Weak**   | Does not meet the above requirements                                                                   |
+
+## Example
+
+```text
+Enter a password: Password123!
+Password strength: Strong
+
+Enter a password: password123
+Password strength: Medium
+
+Enter a password: hello
+Password strength: Weak
+```
+
+## Learning Objectives
+
+This project demonstrates the use of:
+
+* Functions
+* Conditional statements
+* Loops
+* String methods (`isupper()`, `islower()`, `isdigit()`)
+* Generator expressions with `any()`
+* Basic password validation techniques
+
+
+
